@@ -1,0 +1,37 @@
+<div class="budget-tracker">
+    <h2>Personal Budget Tracker</h2>
+
+    <form (ngSubmit)="addOrUpdateExpense()" #expenseForm="ngForm">
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description"
+            [(ngModel)]="editingExpense ? editingExpense.description : newExpense.description" required>
+        <br />
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount"
+            [(ngModel)]="editingExpense ? editingExpense.amount : newExpense.amount" required>
+        <br />
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" [(ngModel)]="editingExpense ? editingExpense.date : newExpense.date"
+            required>
+        <br />
+        <label for="category">Category:</label>
+        <select id="category" name="category"
+            [(ngModel)]="editingExpense ? editingExpense.category : newExpense.category" required>
+            <option value="cash">Cash</option>
+            <option value="credit_card">Credit Card</option>
+            <option value="upi">UPI</option>
+        </select>
+        <br />
+        <button type="submit" [disabled]="!expenseForm.form.valid">{{ editingExpense ? 'Update' : 'Add Expense' }}</button>
+    </form>
+
+    <p>Total Expense: {{ calculateTotalExpense() }}</p>
+
+    <ul>
+        <li *ngFor="let expense of expenses">
+            {{ expense.description }} - {{ expense.amount }} ({{ expense.date }}) {{ expense.category }}
+            <button (click)="editExpense(expense)">Edit</button>
+            <button (click)="deleteExpense(expense)">Delete</button>
+        </li>
+    </ul>
+</div>
