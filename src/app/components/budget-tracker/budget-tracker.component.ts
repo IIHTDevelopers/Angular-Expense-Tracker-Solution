@@ -12,9 +12,9 @@ export class BudgetTrackerComponent {
   newExpense: Expense = { id: 0, description: '', amount: 0, date: '', category: 'cash' };
   editingExpense: Expense | null = null;
 
-  constructor(private cdr: ChangeDetectorRef) {
-    this.newExpense = { id: 0, description: '', amount: 0, date: '', category: 'cash' };
-  }
+  // constructor(private cdr: ChangeDetectorRef) {
+  //   this.newExpense = { id: 0, description: '', amount: 0, date: '', category: 'cash' };
+  // }
 
   addOrUpdateExpense() {
     if (this.editingExpense) {
