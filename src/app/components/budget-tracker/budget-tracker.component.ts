@@ -26,7 +26,7 @@ export class BudgetTrackerComponent {
 
   editExpense(expense: Expense) {
     this.editingExpense = { ...expense };
-    this.cdr.detectChanges();
+    // this.cdr.detectChanges();
   }
 
   updateExpense() {
